@@ -1,0 +1,157 @@
+<head>
+    <title>Search top news</title>
+</head>
+<template name="defaultLayout">
+    {{> header}} {{> yield }} {{> footer}}
+</template>
+<template name="header">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"> Top News </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <div class="nav navbar-nav navbar-left">
+                    <form class="navbar-form" role="search">
+                        <div class="form-group">
+                            <input id="search-input" type="text" class="form-control" placeholder="Search...">
+                        </div>
+                        <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                    </form>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    {{> loginButtons}}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+</template>
+<template name="footer">
+    <!-- === Footer === -->
+    <footer>
+        {{#if time}}
+        <div class="left">
+            <h5><a href="https://nazclarion.com" target="_blank">Nazclarion &reg; {{year}}</a></h5>
+        </div>
+        {{/if}}
+        <div class="right">
+            <h5>{{time}}</h5>
+        </div>
+    </footer>
+</template>
+<template name="SearchResults">
+    <div class="container-fluid">
+        <div class="row-padding">
+            <div class="col col-lg-3 col-md-4 col-sm-4 pull-left fixed">
+                <div class="filter-container">
+                    <!-- <label>Filters:</label> -->
+                    <div class="panel-group">
+                        {{#if feeds}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="#collapse-sources" data-toggle="collapse">
+                                    <span class="glyphicon glyphicon-filter"></span>&nbsp;Sources
+                                    {{#if nSourcesSelected}}<span>: #{{nSourcesSelected}}</span>{{/if}}
+                                    <span id="reset-feed-source-filters" class="btn btn-default btn-xs pull-right">Reset</span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse-sources" class="panel-body panel-collapse collapse in">
+                                <form id="source-filters">
+                                    {{#each feeds}}
+                                    <div id="source-filter" class="checkbox">
+                                        <label id="source-filter" class="checkbox filter">
+                                            <input type="checkbox" value="{{title}}" hidden>{{{title}}}</label>
+                                    </div>
+                                    {{/each}}
+                                </form>
+                            </div>
+                        </div>
+                        {{/if}}
+                        {{#if tags}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <a href="#collapse-tags" data-toggle="collapse">
+                                    <span class="glyphicon glyphicon-filter"></span>&nbsp;Tags
+                                    {{#if nTagsSelected}}<span>: #{{nTagsSelected}}</span>{{/if}}
+                                    <span id="reset-tags-filters" class="btn btn-default btn-xs pull-right">Reset</span>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="collapse-tags" class="panel-body panel-collapse collapse in">
+                                <form id="tag-filters">
+                                    {{#each tags}}
+                                    <div id="tag-filter" class="checkbox">
+                                        <label id="tag-filter" class="checkbox filter">
+                                            <input type="checkbox" value="{{this}}" hidden>{{this}}</label>
+                                    </div>
+                                    {{/each}}
+                                </form>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-9 col-md-8 col-sm-8 pull-right">
+                {{#each posts}}
+                <div class="row-container">
+                    <!--
+                    <div class="votes">
+                        <div class="btn-group-vertical">
+                            <button class="btn btn-default js-upvote">
+                                <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span>
+                            </button>
+                            <button class="btn btn-default js-downvote">
+                                <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+ -->
+                    <a href="{{link}}" class="post">
+                        <div class="row-padding">
+                            <div class="post col {{#if Enclosures _id}} col-md-8 {{else}} col-md-12 {{/if}}">
+                                <div class="post-header">
+                                    <a href="{{meta.xmlUrl}}"><span class="badge">{{{meta.title}}}</span></a><span> - {{date}}</span>
+                                </div>
+                                {{#if image.url}}
+                                <div class="post-image">
+                                    <img src="{{image.url}}" alt="">
+                                </div>
+                                {{/if}}
+                                <div class="post-body">
+                                    <h4>{{{title}}}</h4>
+                                    <p class="text-justify">{{{description}}}</p>
+                                </div>
+                            </div>
+                            {{#if Enclosures _id}}
+                            <div class="post-enclosures col col-md-4">
+                                {{#each Enclosures _id}}
+                                <img class="pull-right" src="{{url}}" alt="">
+                                {{/each}}
+                                <br>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div id="Filters" class="container">
+    </div>
+    <div id="SearchResults" class="container">
+    </div>
+</template>

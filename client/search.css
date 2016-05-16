@@ -1,0 +1,178 @@
+/* CSS declarations go here */
+
+html * {
+    outline: 0 !important;
+}
+
+body {
+    padding-top: 70px!important;
+    padding-bottom: 70px!important;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+    /*    .navbar-form input {
+        min-width: 320px;
+    }
+*/
+}
+
+.navbar-form input {
+    min-width: 220px;
+    -webkit-transition: min-width 0.4s ease, transform 0.2s; /* Safari */
+    transition: min-width 0.4s ease, transform 0.2s;
+}
+
+.navbar-form input:focus, .navbar-form input:hover {
+    min-width: 420px;
+    -webkit-transform: scale(1.15);
+}
+
+.navbar {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.navbar-brand {
+    font-size: 1.8em !important;
+    margin: 15px 0px 0px 140px !important;
+}
+
+.navbar-nav {
+    margin: 15px 0px 0px 150px !important;
+}
+
+input#search-input {
+    box-shadow: 0px 0px 20px #ddd;
+    font-weight: bold;
+}
+
+div.checkbox {
+    border-bottom: 2px solid #eee;
+    padding: 5px !important;
+    margin: 0 0 0 0 !important;
+}
+
+div.checkbox label {
+    margin: 0 0 0 0 !important;
+    padding: 0px 0px 0px 0px !important;
+}
+
+div.checkbox:hover {
+    cursor: pointer;
+    box-shadow: 0 0 2px #ddd;
+    /*background-color: #eee;*/
+}
+
+.selected {
+    background-color: #ddd;
+}
+
+.navbar-fixed-top {
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+
+.fixed {
+    position: fixed;
+    height: 90%;
+    /*overflow: auto;*/
+}
+
+.row-container,
+.filter-container {
+    display: table;
+    table-layout: fixed;
+    /*border-spacing: 5px;*/
+    margin: 10px;
+    width: 100%;
+}
+
+.row-container {
+    box-shadow: 0 0 2px #ddd;
+    border-radius: 5px;
+    border-bottom: 2px solid #eee;
+}
+
+.row-container:hover {
+    box-shadow: 0 0 10px #a5a5a5;
+    cursor: pointer;
+    /*-webkit-transform: scale(1.02);*/
+    /*border: 2px solid #a5a5a5;*/
+}
+
+.votes {
+    display: table-cell;
+    width: 5%;
+    vertical-align: top;
+    text-align: center;
+}
+
+
+/* Post */
+
+.post {
+    color: black;
+    /*width: 100%;*/
+    vertical-align: middle;
+    display: table-cell;
+    margin: 20px auto;
+    /*width: 60%;*/
+    font-family: 'Source Sans', 'Helvetica', sans-serif;
+}
+
+.post-header,
+.post-image,
+.post-body {
+    padding: 5px;
+}
+
+.post-image {
+    float: left !important;
+    margin: 10px auto;
+}
+
+.post-image img {
+    min-width: 120px;
+    max-width: 300px;
+}
+
+.post-enclosures img {
+    width: 200px;
+    margin: 15px auto;
+}
+
+
+/* Footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 0;
+    width: 100%;
+    text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.8), 1px 1px 0px rgba(0, 0, 0, 0.2);
+    color: #333;
+    font-weight: bold;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+footer .left {
+    float: left !important;
+    padding-left: 20px;
+}
+
+footer .right {
+    float: right !important;
+    padding-right: 20px;
+}
